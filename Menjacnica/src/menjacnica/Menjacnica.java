@@ -49,7 +49,6 @@ public class Menjacnica implements MenjacnicaInterface{
 
 	@Override
 	public void dodavanjeKursa(Valuta valuta, Kurs kurs) {
-		// TODO Auto-generated method stub
 		
 	}
 
