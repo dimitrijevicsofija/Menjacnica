@@ -10,7 +10,8 @@ public class Menjacnica {
 	}
 
 	public void setValute(LinkedList<Valuta> valute) {
-		this.valute = valute;
+		if (valute != null)
+			this.valute = valute;
 	}
 
 	@Override

@@ -12,7 +12,8 @@ public class Valuta {
 	}
 
 	public void setNaziv(String naziv) {
-		this.naziv = naziv;
+		if (naziv != null && !naziv.equals(""))
+			this.naziv = naziv;
 	}
 
 	public String getSkraceniNaziv() {
@@ -20,7 +21,8 @@ public class Valuta {
 	}
 
 	public void setSkraceniNaziv(String skraceniNaziv) {
-		this.skraceniNaziv = skraceniNaziv;
+		if (skraceniNaziv != null && !skraceniNaziv.equals(""))
+			this.skraceniNaziv = skraceniNaziv;
 	}
 
 	public LinkedList<Kurs> getKursevi() {
@@ -28,7 +30,8 @@ public class Valuta {
 	}
 
 	public void setKursevi(LinkedList<Kurs> kursevi) {
-		this.kursevi = kursevi;
+		if (kursevi != null)
+			this.kursevi = kursevi;
 	}
 
 	@Override
