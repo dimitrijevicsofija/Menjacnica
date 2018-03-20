@@ -5,7 +5,7 @@ import java.util.LinkedList;
 
 import menjacnica_interfejs.MenjacnicaInterface;
 
-public class Menjacnica implements MenjacnicaInterface{
+public class Menjacnica implements MenjacnicaInterface {
 	private LinkedList<Valuta> valute = new LinkedList<Valuta>();
 
 	public LinkedList<Valuta> getValute() {
@@ -49,18 +49,52 @@ public class Menjacnica implements MenjacnicaInterface{
 
 	@Override
 	public void dodavanjeKursa(Valuta valuta, Kurs kurs) {
-		
+
+		if (valute.isEmpty() || !valute.contains(valuta))
+			System.out.println("U menjacnici ne postoji trazena valuta.");
+		else {
+			valute.get(valute.indexOf(valuta)).getKursevi().add(kurs);
+		}
+
 	}
 
 	@Override
 	public void brisanjeKursa(Valuta valuta, GregorianCalendar datum) {
-		// TODO Auto-generated method stub
-		
+		if (valute.isEmpty() || !valute.contains(valuta))
+			System.out.println("U menjacnici ne postoji trazena valuta.");
+		else {
+			LinkedList<Kurs> pom = valute.get(valute.indexOf(valuta)).getKursevi();
+			int a = 1;
+			for (int i = 0; i < pom.size(); i++) {
+				if (pom.get(i).getDatum().equals(datum)) {
+					pom.remove(i);
+					a = 0;
+				}
+				if (a == 0)
+					break;
+			}
+			if (a == 1)
+				System.out.println("Kurs za trazeni datum ne postoji u menjacnici.");
+			else
+				valute.get(valute.indexOf(valuta)).setKursevi(pom);
+		}
 	}
 
 	@Override
-	public Kurs pronalazenjeKursaValute(String naziv, GregorianCalendar datum) {
-		// TODO Auto-generated method stub
+	public Kurs pronalazenjeKursaValute(Valuta valuta, GregorianCalendar datum) {
+
+		if (valute.isEmpty() || !valute.contains(valuta))
+			return null;
+		else {
+			LinkedList<Kurs> pom = valute.get(valute.indexOf(valuta)).getKursevi();
+
+			for (int i = 0; i < pom.size(); i++) {
+				if (pom.get(i).getDatum().equals(datum)) {
+					return pom.get(i);
+				}
+			}
+		}
+		System.out.println("Ne postoji vrednost kursa za trazeni datum.");
 		return null;
 	}
 

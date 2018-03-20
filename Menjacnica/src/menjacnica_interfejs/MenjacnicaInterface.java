@@ -8,5 +8,5 @@ import menjacnica.Valuta;
 public interface MenjacnicaInterface {
       public void dodavanjeKursa(Valuta valuta, Kurs kurs);
       public void brisanjeKursa(Valuta valuta, GregorianCalendar datum);
-      public Kurs pronalazenjeKursaValute(String naziv, GregorianCalendar datum);
+      public Kurs pronalazenjeKursaValute(Valuta valuta, GregorianCalendar datum);
 }
