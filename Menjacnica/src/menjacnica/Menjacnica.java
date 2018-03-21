@@ -51,17 +51,16 @@ public class Menjacnica implements MenjacnicaInterface {
 	public void dodavanjeKursa(Valuta valuta, Kurs kurs) {
 
 		if (valute.isEmpty() || !valute.contains(valuta))
-			System.out.println("U menjacnici ne postoji trazena valuta.");
+			throw new RuntimeException("U menjacnici ne postoji trazena valuta.");
 		else {
 			valute.get(valute.indexOf(valuta)).getKursevi().add(kurs);
 		}
-
 	}
 
 	@Override
 	public void brisanjeKursa(Valuta valuta, GregorianCalendar datum) {
 		if (valute.isEmpty() || !valute.contains(valuta))
-			System.out.println("U menjacnici ne postoji trazena valuta.");
+			throw new RuntimeException("U menjacnici ne postoji trazena valuta.");
 		else {
 			LinkedList<Kurs> pom = valute.get(valute.indexOf(valuta)).getKursevi();
 			int a = 1;
@@ -74,7 +73,7 @@ public class Menjacnica implements MenjacnicaInterface {
 					break;
 			}
 			if (a == 1)
-				System.out.println("Kurs za trazeni datum ne postoji u menjacnici.");
+				throw new RuntimeException("Kurs za trazeni datum ne postoji u menjacnici.");
 			else
 				valute.get(valute.indexOf(valuta)).setKursevi(pom);
 		}
@@ -94,7 +93,6 @@ public class Menjacnica implements MenjacnicaInterface {
 				}
 			}
 		}
-		System.out.println("Ne postoji vrednost kursa za trazeni datum.");
 		return null;
 	}
 
